@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+<body>
+
+<div id="root" :x="n">
+    <h2 v-text="n">当前的n值为:{{n}}</h2>
+    <h2>当前的n值为:{{n}}</h2>
+    <button @click="add">点击n++</button>
+    <button @click="bye">点击销毁vm</button>
+</div>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: "#root",
+        //template: `
+        //  <div>
+        //  <h2>当前的n值为:{{ n }}</h2>
+        //  <button @click="add">点击n++</button>
+        //  </div>`,
+        data: {
+            n: 1,
+        },
+        methods: {
+            add() {
+                this.n++;
+            },
+            bye() {
+                console.log("bye");
+                this.$destroy();
+            },
+        },
+        beforeCreate() {
+            console.log("beforeCreate被调用了");
+        },
+        created() {
+            console.log("created被调用了");
+        },
+        beforeMount() {
+            console.log("beforeMount被调用了");
+        },
+        mounted() {
+            console.log("mounted被调用了");
+        },
+        beforeUpdate() {
+            console.log("beforeUpdate被调用了");
+        },
+        updated() {
+            console.log("updated被调用了");
+        },
+        beforeDestroy() {
+            console.log("beforeDestroyed");
+            console.log(this.n);
+        },
+        destroy() {
+            console.log('destroy')
+        },
+
+    });
+
+</script>
+</body>
+</html>

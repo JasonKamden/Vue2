@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+<body>
+<div id="root">
+    <h1>学校名称：{{name}}</h1>
+    <h1>学校地址:{{address}}</h1>
+    <h1>测试:{{$emit}}</h1>
+
+</div>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+        data: {
+            name: "钟钟",
+            address: "上海"
+        },
+
+    });
+    vm.$mount("#root");
+    console.log(vm);
+</script>
+</body>
+</html>

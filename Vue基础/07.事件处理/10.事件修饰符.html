@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        .demo1 {
+            height: 50px;
+            background-color: #bfa;
+        }
+
+        .box1 {
+            height: 50px;
+            background-color: red;
+            padding: 5px;
+        }
+
+        .box2 {
+            padding: 5px;
+            height: 50px;
+            background-color: orange;
+        }
+        .list {
+            height: 200px;
+            width: 200px;
+            background-color: pink;
+            overflow: auto;
+        }
+        li {
+            height: 100px;
+
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <h2>欢迎{{name}}</h2>
+    <a href="https://baidu.com" @click.prevent="showInfo">百度</a>
+
+    <hr>
+
+    <div class="demo1" @click="showInfo">
+        <button @click.stop="showInfo">点我</button>
+    </div>
+
+    <button @click.once="showInfo">点我</button>
+
+    <div class="box1" @click.capture="showMsg(1)">
+        div1
+        <div class="box2" @click="showMsg(2)">
+            div2
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="demo1" @click.self="showInfo">
+        <button @click="showInfo">点我</button>
+    </div>
+
+    <ul class="list" @wheel.passive="demo">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+
+
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            name: "钟",
+
+        },
+        methods: {
+            showInfo(e) {
+                //alert("同学你好！");
+                console.log(e.target);
+
+            },
+
+            showMsg(msg) {
+                console.log(msg);
+            },
+            demo() {
+                for (let i = 0; i < 100000; i++) {
+                    console.log("#");
+                }
+                console.log("累坏了！");
+            },
+        }
+    })
+</script>
+</body>
+</html>

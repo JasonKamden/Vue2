@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+<body>
+<div id="root">
+    <h1>hello {{name.toUpperCase()}} {{address}} {{Date.now()}}</h1>
+
+</div>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+    new Vue({
+        el: "#root",///el：element 用于指定当前Vue实例为哪个容器服务，但通常为css选择器字符
+        data: {
+            name: "Jason",
+            address: "上海",
+
+        }
+    });
+
+
+</script>
+</body>
+</html>
